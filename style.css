@@ -1,0 +1,144 @@
+/* Google Font Import (Inter Font) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+
+/* TechQuizc Variables */
+:root {
+    --bg-dark: #0f0c1b;
+    --card-bg: rgba(25, 20, 43, 0.85);
+    --primary-purple: #8b5cf6;
+    --primary-hover: #7c3aed;
+    --text-muted: #9ca3af;
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+/*Inter Font For All Elements */
+* {
+	font-family: 'Inter', sans-serif !important;
+}
+
+/* Base Body Styles */
+body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: -0.01em;
+}
+
+
+/*----------------------------------Header----------------------------------------*/
+/* Custom Navbar */
+.custom-navbar {
+    background-color: transparent;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+/* TechQuiz text Styling */
+.logo-text {
+    font-size: 25px; 
+    font-weight: 800;   
+    color: #ffffff;
+    letter-spacing: 0.5px;        
+}
+
+
+/* Logo T Icon Styling */
+.logo-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: var(--primary-purple);;
+    margin-right: 0.75rem;
+}
+
+
+/* Navigation Links Gap */
+.nav-links-gap {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+/* Purple Line */
+.nav-link.active {
+    color: #ffffff !important;
+    border-bottom: 2px solid var(--primary-purple);
+}
+
+/* Custom Sign In Button */
+.btn-signin {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50rem;
+    padding: 0.4rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Sign In Button Hover */
+.btn-signin:hover {
+    background-color: #ffffff;
+    color: var(--bg-dark);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------Footer---------------------------------------*/
+/* Custom Footer Styling */
+.custom-footer {
+    margin-top: auto;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    background-color: transparent;
+    padding: 1.2rem 1rem;
+}
+
+/* Footer Flex Layout */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+/* Text Styling */
+.footer-left span,
+.footer-center span,
+.footer-right span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+}
+
+/* Mobile Screen Responsive Styling */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
