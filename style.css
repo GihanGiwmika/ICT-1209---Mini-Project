@@ -93,21 +93,178 @@ body {
     color: var(--bg-dark);
 }
 
+/*---------------------------------------------------------------------------------*/
+
+/* Home Page Section Styling */
+.home-header {
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+    border: 1px solid var(--primary-purple);
+    border-radius: 50rem;
+    margin-bottom: 1rem;
+}
+
+.home-title {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+}
+
+.highlight-purple {
+    color: #a78bfa;
+}
+
+.home-description {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 1100px;
+    margin: 1rem auto 0 auto;
+}
+
+/* Login/Register Tab Buttons Styling*/
+.tab-switch-wrapper {
+    display: flex;
+    background-color: rgba(15, 12, 27, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 50rem;
+    padding: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    flex: 1;
+    border: none;
+    border-radius: 50rem;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: var(--primary-purple);
+    color: #ffffff;
+}
+
+.tab-btn.inactive {
+    background-color: transparent;
+    color: var(--text-muted);
+}
+
+.tab-btn.inactive:hover {
+    color: #ffffff;
+}
+
+/* Custom Input and Select Fields */
+.custom-input {
+    background-color: rgba(15, 12, 27, 0.9) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 0.6rem 1rem !important;
+    border-radius: 8px !important;
+}
+
+.custom-input:focus {
+    border-color: var(--primary-purple) !important;
+    box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25) !important;
+}
+
+.custom-input option {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+}
+
+/* Quiz Card Text */
+.card-subtitle {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.card-title {
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 0.25rem;
+}
+
+.card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Quiz Stats Section */
+.quiz-stats-row {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-item strong {
+    display: block;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.stat-item span {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+/* Custom Card Structure & Border Styling */
+.custom-card {
+    background: rgba(25, 20, 43, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+/* Login & Start Quiz button Styling */
+.btn-purple {
+    background-color: #8b5cf6 !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    border: none !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease;
+}
+
+.btn-purple:hover {
+    background-color: #7c3aed !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
 
 
+/* Placeholder Color Styling(nipun_edman) */
+.form-control::placeholder {
+    color: #6b7280 !important;
+    opacity: 1;
+}
 
-
-
-
-
-
-
-
-
-
+/* Labels Text Color Fix */
+.form-label {
+    color: #9ca3af !important;
+}
 
 /*-----------------------------------Footer---------------------------------------*/
 /* Custom Footer Styling */
+
 .custom-footer {
     margin-top: auto;
     width: 100%;
