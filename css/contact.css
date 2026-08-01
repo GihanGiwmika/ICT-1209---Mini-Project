@@ -1,0 +1,124 @@
+/* Header Titles */
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Custom Card Container */
+.custom-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+/* Form Styling */
+.form-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.custom-input {
+    width: 100%;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.custom-input::placeholder {
+    color: #6b7280;
+}
+
+.custom-input:focus {
+    border-color: var(--primary-purple);
+}
+
+/* Gradient Submit Button */
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(90deg, #818cf8 0%, #c084fc 50%, #e879f9 100%);
+    border: none;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+/* Info Cards Styling (Right Side) */
+.info-card {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    padding: 20px 24px;
+	flex: 1;
+}
+
+.info-icon {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.info-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.info-text {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.info-subtext {
+    color: #6b7280;
+    font-size: 0.78rem;
+    margin: 0 0 2px 0;
+}
+
+.info-highlight {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+
+/* FontAwesome Icons Not Apply Inter Font */
+.info-icon i {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+
+

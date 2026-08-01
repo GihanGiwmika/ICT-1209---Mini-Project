@@ -7,14 +7,111 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" >
     <!-- Custom CSS -->
+	 <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    
 
+    <!---------------------------------- Header -------------------------------------->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid px-4">
+            <!-- Logo -->
+            <div class="logo">
+                <span class="logo-icon">T</span>
+                <span class="logo-text">TechQuiz</span>
+            </div>
+        
+            <!-- Links -->
+            <div class="navbar-nav ms-auto nav-links-gap">
+                <a class="nav-link text-light" href="index.html">Home</a>
+                <a class="nav-link text-light" href="leaderboard.html">Leaderboard</a>
+                <a class="nav-link text-light" href="contact.html">Contact</a>
+            </div>
+        
+            <!-- Sign In Button -->
+            <a href="#auth-section" id="user-nav-btn" class="btn-signin ms-4">Sign In</a>
+        </div>
+    </nav>
 
+    <!----------------------- Quiz Content Container -------------------------------->
+    <div class="container quiz-container my-auto py-4">
+        
+        <!-- Top Section: Progress & Timer -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <!-- Progress -->
+            <div class="d-flex align-items-center gap-3">
+                <span class="progress-text">Progress: <strong id="progress-text">Question 01 of 10</strong></span>
+                <div class="custom-progress">
+                    <div class="progress-fill" id="progress-bar" style="width: 10%;"></div>
+                </div>
+            </div>
 
+            <!-- Timer -->
+            <div class="timer-box text-center">
+                <div class="timer-label">Timer</div>
+                <div class="timer-value" id="timer-text">00:30</div>
+            </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="question-card mb-4">
+            <div class="category-tag" id="category-tag">CATEGORY: ICT . QUESTION 1 OF 10</div>
+            <h2 class="question-text" id="question-text">Loading question...</h2>
+        </div>
+
+        <!-- Answer Grid -->
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="option-card" onclick="selectOption(this)">
+                    <span class="option-badge">A</span>
+                    <span class="option-text" id="optA"></span>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="option-card" onclick="selectOption(this)">
+                    <span class="option-badge">B</span>
+                    <span class="option-text" id="optB"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="option-card" onclick="selectOption(this)">
+                    <span class="option-badge">C</span>
+                    <span class="option-text" id="optC"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="option-card" onclick="selectOption(this)">
+                    <span class="option-badge">D</span>
+                    <span class="option-text" id="optD"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Button -->
+        <div class="d-flex justify-content-end mt-4">
+            <button class="btn btn-primary px-4 py-2" id="next-btn" onclick="nextQuestion()" style="background-color: var(--primary-purple, #8b5cf6); border: none; border-radius: 8px;">Next Question</button>
+        </div>
+
+    </div>
+	
+	<!-- Score Popup Box -->
+	<div id="score-modal" class="custom-modal d-none">
+		<div class="modal-content-box text-center">
+			<div class="modal-icon">🎉</div>
+			<h3 class="modal-title">Quiz Completed!</h3>
+			<p class="modal-subtitle">Here is your final score:</p>
+					
+			<div class="score-display">
+				<span id="final-score">0</span> <span class="score-total">/ 100</span>
+			</div>
+
+			<button class="btn-modal-restart" onclick="restartQuiz()">Try Again</button>
+		</div>
+	</div>
 
 
 
@@ -32,5 +129,7 @@
 			</div>
 		</div>
 	</footer>
+	<!-- Main JS File -->
+    <script src="js/quiz.js"></script>
 </body>
 </html>
