@@ -1,4 +1,3 @@
-
 const quizData = {
     ict: [
         { q: "Which tag is used to embed a JavaScript file in HTML?", options: ["<script>", "<js>", "<javascript>", "<link>"], answer: 0 },
@@ -39,56 +38,38 @@ const quizData = {
 };
 
 let currentCategory = "ict";
-let questions = quizData[currentCategory];
+let questions = quizData.ict;
 let currentIndex = 0;
 let score = 0;
 let timeLeft = 30;
-let timerInterval;
+let timerInterval = null;
 let isAnswered = false;
 
-
-function updateHeaderUser() {
-    const userBtn = document.getElementById('user-nav-btn');
-    const savedUser = localStorage.getItem('techquiz_user');
-
-    if (userBtn && savedUser) {
-        userBtn.innerText = savedUser;
-        userBtn.href = "#";
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    updateHeaderUser();
+    // Read category from URL query or localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const catFromUrl = urlParams.get('cat');
+    const savedCategory = catFromUrl || localStorage.getItem('selectedCategory');
 
-    
-    const savedCategory = localStorage.getItem('selectedCategory');
     if (savedCategory && quizData[savedCategory]) {
         currentCategory = savedCategory;
+    } else {
+        currentCategory = 'ict';
     }
-    
-    questions = quizData[currentCategory];
 
-    const qElem = document.getElementById('question-text');
-    if (qElem) {
-        loadQuestion();
-    }
+    questions = quizData[currentCategory];
+    loadQuestion();
 });
 
 function loadQuestion() {
     const qElem = document.getElementById('question-text');
-    
-    
-    if (!qElem) {
-        clearInterval(timerInterval);
-        return;
-    }
+    if (!qElem || !questions || !questions[currentIndex]) return;
 
     isAnswered = false;
     const currentQ = questions[currentIndex];
-
-    // UI Texts Update
     qElem.innerText = currentQ.q;
-    
+
+    // Load options safely
     const optA = document.getElementById('optA');
     const optB = document.getElementById('optB');
     const optC = document.getElementById('optC');
@@ -99,26 +80,20 @@ function loadQuestion() {
     if (optC) optC.innerText = currentQ.options[2];
     if (optD) optD.innerText = currentQ.options[3];
 
-    // Category Name Formatting
-    const categoryNames = {
-        ict: "ICT",
-        science: "SCIENCE",
-        gk: "GENERAL KNOWLEDGE"
-    };
-
-    // Progress Bar Update
+    // Progress updates
     const qNum = currentIndex + 1;
+    const categoryTitles = { ict: "ICT", science: "SCIENCE", gk: "GENERAL KNOWLEDGE" };
+
     const progText = document.getElementById('progress-text');
     const catTag = document.getElementById('category-tag');
     const progBar = document.getElementById('progress-bar');
 
-    if (progText) progText.innerText = `Question 0${qNum} of 10`;
-    if (catTag) catTag.innerText = `CATEGORY: ${categoryNames[currentCategory]} . QUESTION ${qNum} OF 10`;
+    if (progText) progText.innerText = `Question ${qNum < 10 ? '0' + qNum : qNum} of 10`;
+    if (catTag) catTag.innerText = `CATEGORY: ${categoryTitles[currentCategory]} • QUESTION ${qNum} OF 10`;
     if (progBar) progBar.style.width = `${(qNum / 10) * 100}%`;
 
-    // Highlight Reset
-    const allOptions = document.querySelectorAll('.option-card');
-    allOptions.forEach(opt => {
+    // Reset option styling
+    document.querySelectorAll('.option-card').forEach(opt => {
         opt.classList.remove('selected', 'correct', 'wrong');
     });
 
@@ -128,18 +103,18 @@ function loadQuestion() {
 function selectOption(element) {
     if (isAnswered) return;
     isAnswered = true;
-
     clearInterval(timerInterval);
 
-    const allOptions = document.querySelectorAll('.option-card');
-    const selectedIndex = Array.from(allOptions).indexOf(element);
+    const card = element.closest('.option-card');
+    const allOptions = Array.from(document.querySelectorAll('.option-card'));
+    const selectedIndex = allOptions.indexOf(card);
     const correctIndex = questions[currentIndex].answer;
 
     if (selectedIndex === correctIndex) {
-        element.classList.add('correct');
-        score += 10; 
+        card.classList.add('correct');
+        score += 10;
     } else {
-        element.classList.add('wrong');
+        card.classList.add('wrong');
         if (allOptions[correctIndex]) {
             allOptions[correctIndex].classList.add('correct');
         }
@@ -156,40 +131,41 @@ function nextQuestion() {
     }
 }
 
+function saveScoreToDB(finalScore) {
+    const formData = new FormData();
+    formData.append('score', finalScore);
+    formData.append('category', currentCategory);
+
+    fetch('save_score.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => console.log('Score saved:', data))
+    .catch(err => console.error('Save error:', err));
+}
+
 function showScoreModal() {
     const modal = document.getElementById('score-modal');
     const finalScoreElem = document.getElementById('final-score');
-    
+
     if (modal && finalScoreElem) {
         finalScoreElem.innerText = score;
         modal.classList.remove('d-none');
+        saveScoreToDB(score);
     }
 }
 
 function restartQuiz() {
-    const modal = document.getElementById('score-modal');
-    if (modal) modal.classList.add('d-none');
-
-    currentIndex = 0;
-    score = 0;
-    loadQuestion();
+    window.location.href = 'dashboard.php';
 }
 
 function startTimer() {
     clearInterval(timerInterval);
-    
-    const timerElem = document.getElementById('timer-text');
-    if (!timerElem) return;
-
     timeLeft = 30;
     updateTimerText();
 
     timerInterval = setInterval(() => {
-        if (!document.getElementById('timer-text')) {
-            clearInterval(timerInterval);
-            return;
-        }
-
         timeLeft--;
         updateTimerText();
 
@@ -203,7 +179,6 @@ function startTimer() {
 function updateTimerText() {
     const timerElem = document.getElementById('timer-text');
     if (timerElem) {
-        const sec = timeLeft < 10 ? `0${timeLeft}` : timeLeft;
-        timerElem.innerText = `00:${sec}`;
+        timerElem.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
     }
 }
