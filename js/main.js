@@ -36,9 +36,49 @@ function updateHeaderUser() {
     const userBtn = document.getElementById('user-nav-btn');
     const savedUser = localStorage.getItem('techquiz_user');
 
-    if (userBtn && savedUser) {
-        userBtn.innerText = savedUser;
-        userBtn.href = "#";
+    if (userBtn) {
+        if (savedUser) {
+        
+            userBtn.innerHTML = `👤 ${savedUser} <span style="font-size: 0.7rem; margin-left: 4px;">▼</span>`;
+            userBtn.href = "javascript:void(0);"; 
+
+            // Add Dropdown Menu
+            let dropdown = document.getElementById('user-dropdown-menu');
+            if (!dropdown) {
+                dropdown = document.createElement('div');
+                dropdown.id = 'user-dropdown-menu';
+                dropdown.className = 'dropdown-menu-custom';
+                dropdown.innerHTML = `<div class="dropdown-item-custom" id="logout-btn">🚪 Logout</div>`;
+                
+                //Dropdown wrapper in Button 
+                const wrapper = document.createElement('div');
+                wrapper.className = 'user-dropdown';
+                userBtn.parentNode.insertBefore(wrapper, userBtn);
+                wrapper.appendChild(userBtn);
+                wrapper.appendChild(dropdown);
+
+                // Logout Button Event
+                document.getElementById('logout-btn').addEventListener('click', () => {
+                    localStorage.removeItem('techquiz_user');
+                    alert('Successfully Logged Out!');
+                    window.location.reload();
+                });
+            }
+
+            // Click Dropdown Toggle 
+            userBtn.onclick = (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('show');
+            };
+
+            document.addEventListener('click', () => {
+                if (dropdown) dropdown.classList.remove('show');
+            });
+
+        } else {
+            userBtn.innerText = "Sign In";
+            userBtn.href = "#auth-section";
+        }
     }
 }
 

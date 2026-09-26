@@ -1,0 +1,42 @@
+/* Leaderboard Specific Styles */
+.leaderboard-card {
+    background: #1e1b2e;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.table-leaderboard {
+    margin-bottom: 0;
+    color: #e2e8f0;
+}
+
+.table-leaderboard thead th {
+    background-color: #161324;
+    color: #94a3b8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 20px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.table-leaderboard tbody td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.rank-1 { background: #ffd700; color: #000; }
+.rank-2 { background: #c0c0c0; color: #000; }
+.rank-3 { background: #cd7f32; color: #fff; }
