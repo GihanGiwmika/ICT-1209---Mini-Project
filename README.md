@@ -15,13 +15,14 @@ About The Project
 TechQuiz is a simple multiple-choice quiz system built with PHP and MySQL. It lets registered users choose between ICT, Science, and General Knowledge topics. Each attempt contains 10 multiple-choice questions with a 30-second countdown for each question. Final scores are saved into MySQL, and the top 5 high scores are shown on the leaderboard page.
 
 Main Features
-- User registration and login with bcrypt password hashing
-- Session based authentication and clean logout
-- Category selection (ICT, Science, GK)
-- Timed questions (30 seconds per question)
-- Instant green/red feedback on answer click
-- Automatic score calculation and AJAX save
-- Dynamic leaderboard displaying top 5 ranking
+1. User registration and login with bcrypt password hashing
+2. Session based authentication and clean logout
+3. Category selection (ICT, Science, GK)
+4. Timed questions (30 seconds per question)
+5. Instant green/red feedback on answer click
+6. Automatic score calculation and AJAX save
+7. Dynamic leaderboard displaying top 5 ranking
+
 
 
 Technologies Used
